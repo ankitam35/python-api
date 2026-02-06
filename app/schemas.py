@@ -1,30 +1,11 @@
 from pydantic import BaseModel
-from datetime import datetime
-from typing import Optional
 
-
-class ItemBase(BaseModel):
-    """Base schema for Item."""
+class UserCreate(BaseModel):
     name: str
-    description: Optional[str] = None
+    email: str
 
-
-class ItemCreate(ItemBase):
-    """Schema for creating an Item."""
-    pass
-
-
-class ItemUpdate(BaseModel):
-    """Schema for updating an Item."""
-    name: Optional[str] = None
-    description: Optional[str] = None
-
-
-class ItemResponse(ItemBase):
-    """Schema for Item response."""
+class UserResponse(UserCreate):
     id: int
-    created_at: datetime
-    updated_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True
